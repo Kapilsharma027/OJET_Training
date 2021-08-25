@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script type="text/javascript" src="libs/jquery-3.3.1.min.js"> </script>
+<script>
+	//Library available online on jQuery.com
+	$(document).ready( function()
+	{
+		
+		$("#email_id").focus(function()
+			{
+				//$("#email_id").val("abc@wipro.com");
+				//Since email-id is already selected, this also works.
+				$(this).val("abc@wipro.com");
+
+			}
+		
+		);
+		
+		$("#loc").mouseover(function()
+			{
+				$("#div-id").css({"background-color": "#f90", "font-size":"30px"});
+
+					
+			}
+		
+		);
+		
+		$("#loc").mouseout(function()
+			{
+				$("#div-id").css("background-color", "#09f");
+
+			}
+		
+		);
+		
+		$("button").click(function()
+			{
+				console.log("clicked")
+				$("h1").toggle();
+			}
+				
+		);
+	}
+	
+	);
+	
+		
+</script>
+
+<style>
+	.normal {
+		background-color: red;
+	}
+	
+	.important{
+		color: yellow;
+		font-size: 30px;
+		background-color: blue;
+	}
+</style>
+</head>
+
+<body>
+
+<h1>Welcome </h1>
+
+<p class="normal" id="loc"> Office Locations </p>
+
+<div id ="div-id"> Mouse over/out</div>
+<form>
+	<input id="email_id" type="email" placeholder="Company Email"> </input>
+	
+</form>
+<button id="btn">hide/show </button>
+
+</body>
+</html>

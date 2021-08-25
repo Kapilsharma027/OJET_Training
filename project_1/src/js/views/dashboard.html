@@ -1,0 +1,47 @@
+<!--
+ Copyright (c) 2014, 2021, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <h1>Dashboard Content Area</h1>
+  <div>
+    <h6>Name : <input data-bind="textInput:name"> </h6>
+    <h6>Age  : <input data-bind="textInput:age"> </h6>
+    <hr>
+    <h3>Your name is <span data-bind="text:name"> </span> and age is <span data-bind="text:age"> </span><h3>
+   
+      <br>
+</div>
+<!-- unihg w/o flex -->
+<!-- <div class="left">
+<h3>Please follow the statistics</h3> -->
+  <!-- <div data-bind="ojComponent:{ component: 'ojChart', type: 'bar', series: datasource }">
+  </div> -->
+  <!-- or -->
+  <!-- <oj-chart type = "bar" series ="[[datasource]]"></oj-chart>
+</div> -->
+
+<!-- <div class="right">
+  <h3>Using External Json File</h3>
+  <div data-bind="ojComponent:{ component: 'ojChart', type: 'pie', series: datasource2 }">
+  </div>
+  </div> -->
+
+  <!-- aligh unsing flex -->
+  <div id="row1">
+  <div id="column1">
+    <h3>Please follow the statistics</h3>
+      <!-- <div data-bind="ojComponent:{ component: 'ojChart', type: 'bar', series: datasource }">
+      </div> -->
+      <!-- or -->
+      <oj-chart type = "bar" series ="[[datasource]]"></oj-chart>
+    </div>
+    
+    <div id="column1">
+      <h3>Using External Json File</h3>
+      <div data-bind="ojComponent:{ component: 'ojChart', type: 'pie', series: datasource2 }">
+      </div>
+      </div>
+</div>
+</div>

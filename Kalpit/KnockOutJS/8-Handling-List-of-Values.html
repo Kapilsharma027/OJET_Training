@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Knockout - Basic Observable</title>
+      <script src="scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
+      <script src="scripts/knockout-3.4.1.js" type="text/javascript"></script>
+      <script>
+         $(function(){
+
+            var SimpleListModel = function(items) {
+                this.courses = ko.observableArray(items);
+                this.courseToAdd = ko.observable("");
+                this.addCourse = function() {
+                    //if (this.courseToAdd() != "") {
+                        this.courses.push(this.courseToAdd());
+                        //this.courseToAdd("");
+                    //}
+                }
+            };
+
+            ko.applyBindings(new SimpleListModel(["HTML5", "CSS3", "AngularJS", "Bootstrap"]));
+         });
+      </script>
+   </head>
+   <body>
+      <!--<form data-bind="submit: addCourse">-->
+          New course:
+          <input data-bind='value: courseToAdd, valueUpdate: "afterkeydown"' />
+          <button type="submit" data-bind="enable: courseToAdd().length > 0">Add</button>
+
+          <!--<button data-bind="click: addCourse">Add</button>-->
+
+          <p>Your courses:</p>
+          <select multiple="multiple" width="50" data-bind="options: courses" style="width:150px;"> </select>
+      <!--</form>-->
+   </body>
+</html>

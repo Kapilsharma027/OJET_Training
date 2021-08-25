@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+</head>
+<body>
+    
+<h2>Name</h2>
+    <input type= "text" data-bind="value: empName">
+    <br>
+    <h2>Gross Salary</h2><br>
+    <input type= "number" data-bind="value: Salary">
+
+    <h2>Deductions</h2>
+    <input type= "number" data-bind="value: Deduction">
+    <br><br>
+    <button data-bind="click: addSalary">Submit</button>
+    <br><br>
+    <!-- table  -->
+
+    <table>
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Gross Salary</th>
+          <th>Deductions</th>
+          <th>Take Home</th>
+          <th>Action</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: EmpData">
+        <tr>
+          <td data-bind="text: empName"></td>
+          <td data-bind="text: Salary"></td>
+          <td data-bind="text: Deduction"></td>
+          <td data-bind="text: total"></td>
+          <td data-bind="click:$root.removeEmp">X</td>
+        </tr>
+        </tbody>
+      </table>
+    <script>
+        function viewModel(){
+            var self = this;
+            self.empName = ko.observable('')
+            self.Salary = ko.observable(0)
+            self.Deduction = ko.observable(0)
+            self.EmpData = ko.observableArray();
+            self.addSalary = function() {
+                console.log(self.empName() + " "+ self.Salary() +" "+ self.Deduction() );
+                self.EmpData.push(new Employee(self.empName(), self.Salary(), self.Deduction()) );
+            }
+            self.removeEmp = function() { 
+                self.EmpData.remove(this);
+            }
+        }
+        function Employee(empName, Salary, Deduction){
+            var self = this;
+            self.empName = empName;
+            self.Salary = ko.observable(Salary);
+            self.Deduction = ko.observable(Deduction);
+            self.total = ko.computed(function() {
+                return self.Salary() - self.Deduction();        
+            }, this);
+        }
+        ko.applyBindings(new viewModel());
+        
+    </script>
+</body>
+</html>
+

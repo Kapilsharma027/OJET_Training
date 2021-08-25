@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>My First Page</title>
+    <script type="text/javascript"> 
+        function add(a,b){
+            var result = a+b;
+            console.log("Result with 2 args:", result);
+            return result;
+        };
+
+        //Functional overloading not supported. 
+        function add(a,b,c){
+            var result = a+b+c;
+            console.log("Result with 3 args:", result);
+            return result;
+        };
+
+        //Variable parameters
+        function add(){
+            console.log("No. of args:", arguments.length);
+            var result = 0;
+            for(let i=0;i<arguments.length;i++)
+                result+=arguments[i];
+                console.log("Result with variable args:", result);
+        };
+       
+        add(10,20);
+        add(10,20,30);
+        add("hi","hello");
+
+
+        //Default arguments
+        function getEMI(amount, rate=10){
+            var emi = amount*rate/100;
+            console.log("Amount", amount, "Rate", rate);
+        };
+        getEMI(1000,20);
+        getEMI(1000);
+
+        //JS - Functional Programming language - Python, Swift, Kotlin, Dart
+        
+        //Anonymus function
+        var subtract = function(a,b){
+            console.log("Subtraction:", a-b);
+        };
+
+        console.log("type:", typeof(subtract));
+        subtract(10,20);
+
+        //Higer order function
+        function doOperation(operation, a, b){
+            operation(a,b);
+        }
+
+        doOperation(add, 30, 40);
+        doOperation(subtract, 10, 20);
+        doOperation(function(x,y){
+            console.log("Multiplication:", x*y);
+        }, 10, 20);
+
+        //Inbuilt higher order function
+        setTimeout(function(){
+            console.log("After 2 seconds")
+        }, 2000);
+
+    </script>
+</head>
+<body>  
+    <h3>OJET Training</h3>
+    <p>Welcome to OJET Training</p>
+</body>
+</html>

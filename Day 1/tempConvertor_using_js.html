@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Temperature Converter using JS</title>
+  </head>
+  <body>
+    <h3>
+      <label>Fahrenheit</label>
+      <input id="inputFahrenheit" type="number" placeholder="Fahrenheit"
+      oninput="toCelciusConverter(this.value)">
+      <p>Celsius: <span id="outputCelsius"></span></p>
+      <hr>
+      <label>Celcius</label>
+      <input id="inputFahrenheit" type="number" placeholder="Celcius"
+      oninput="toFarenheitConverter(this.value)">
+      <p>Fahrenheit: <span id="outputFahrenheit"></span></p>
+    </h3>
+    
+
+  <script>
+     function toCelciusConverter(num) {
+  var fToCel = (num - 32) * 5 / 9;
+        document.getElementById("outputCelsius").innerHTML = fToCel;
+}
+
+
+function toFarenheitConverter(num) {
+  var cToFahr = num * 9 / 5 + 32;
+  document.getElementById("outputFahrenheit").innerHTML = cToFahr;
+}
+  </script>
+    
+  </body>
+</html>

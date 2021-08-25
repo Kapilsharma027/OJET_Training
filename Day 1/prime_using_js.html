@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Check a number is Prime or
+		not using JavaScript
+	</title>
+
+
+</head>
+
+<body>
+	
+		<h1>Prime Check</h1>
+		<hr color="Green">
+    <br>
+
+		<form name="myform">
+			Enter the number:
+			<input type="number" id="inpulValue" name="n" value="">
+
+			<br><br>
+
+			<input type="button" value="Check" id="submitbtn" onClick="p()">
+			<br>
+
+			<h1 id="result"></h1>
+		</form>
+	
+
+  <script type="text/javascript">
+     document.getElementById("submitbtn").onclick = function(){
+        var opa = Number(document.getElementById("inpulValue").value);
+        var res = isPrime(opa);
+        document.getElementById("result").innerHTML = res;
+
+     }
+     function isPrime(num) {
+  for(var i = 2; i < num; i++)
+    if(num % i === 0) return false;
+  return num > 1;
+}
+  </script>
+</body>
+
+</html>

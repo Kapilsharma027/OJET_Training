@@ -1,0 +1,44 @@
+/*
+    Document   : override
+    Created on : <date>
+    Author     : <author>
+    Description:
+        This is where any of your application specific styles should be included
+*/
+
+.sendOffScreen {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.left {
+float: left;
+width: 50%;
+}
+.right {
+float: right;
+width: 50%;
+}
+
+/* using flex */
+#row1{
+  display:flex;
+  flex-direction:row;
+justify-content: space-around;
+}
+
+#column1{
+  display:flex;
+  flex-direction:column;
+
+}
+
+
+#column2{
+  display:flex;
+  flex-direction:column;
+}

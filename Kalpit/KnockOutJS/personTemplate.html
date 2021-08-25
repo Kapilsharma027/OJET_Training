@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+   <head>
+      <script src = "https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js" 
+         type = "text/javascript"></script>
+        <script src = "scripts/jquery-3.1.1.min.js" type = "text/javascript"></script>
+        <script>
+            function myModel(){
+                var self = this;
+
+                self.personList = [
+                    {
+                        firstName: "John",
+                        lastName: "Smith",
+                        mobile: "111"
+                    },
+                    {
+                        firstName: "Merry",
+                        lastName: "Rose",
+                        mobile: "222"
+                    },
+                    {
+                        firstName: "Mike",
+                        lastName: "Tyson",
+                        mobile: "1374124189"
+                    }
+                ]
+            };
+                
+            var vm = new myModel();
+            $(document).ready(function(){
+                ko.applyBindings(vm);
+            });
+        </script>
+        <script type="text/html" id="person-template">
+            <div>
+                <h3>Name: <span data-bind="text: firstName + ''+ lastName"></span></h3>
+                <h4>Contact No.<span data-bind="text: mobile"></span></h4>
+            </div>
+
+        </script>
+   </head> 
+   <body>
+       <div data-bind="template: {name:'person-template',
+    data: { firstName: 'Kalpit', lastName:'Shah', mobile: '3182493127'}}"></div>
+    <div data-bind="template: {name:'person-template',
+    foreach:personList}"></div>
+   
+   </body>
+</html>

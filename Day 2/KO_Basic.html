@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+</head>
+<body>
+
+    
+    <input type= "number" data-bind="value: firstVal">
+    <input type= "number" data-bind="value: SecondVal">
+    <h3>The sum of squares of two number is <span data-bind="text: total"></span></h3>
+
+    
+    <script>
+        //viewmodel
+        function viewModel(){
+            var self = this;
+            self.firstVal = ko.observable(0)
+            self.SecondVal = ko.observable(0)
+            self.total = ko.computed(function() {
+           
+                return self.firstVal()*self.firstVal() + self.SecondVal()*self.SecondVal();        
+            }, this);
+
+        }
+
+        //binding call
+        ko.applyBindings(new viewModel());
+        
+    </script>
+</body>
+</html>
+

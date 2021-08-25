@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script type="text/javascript" src="libs/jquery-3.3.1.min.js"> </script>
+<script>
+	$(document).ready(function(){
+
+        //TOOLTIP should come, not coming for me.
+        $("#content").attr("title", "My tooltip...");//setting
+        var className = $("#content").attr("class");//getting
+        console.log("Class Name:", className);
+
+        $("#btn1").click(function(){
+            //var name = $("#nameInp").val();
+            //alert(name);
+            //$("#content").addClass("important");
+            $("#content").toggleClass("important");
+            $("h3").text("OJET");
+            $("h3").html("<em>Oracle JET</em>");
+            $("h3").append("- Version 8.0");
+        });
+
+        $.ajax({
+            url: "http://google.com",
+            //CORS plugin needed for success to work
+            success: function(data){
+                $("#ajaxData").text(data);
+            },
+            error: function(){
+                $("#ajaxData").text("Error loading content..");
+            }
+        });
+
+    });
+</script>
+
+<style>
+	.normal {
+		background-color: red;
+	}
+	
+	.important{
+		color: yellow;
+		font-size: 30px;
+		background-color: blue;
+	}
+</style>
+</head>
+
+<body>
+
+<h3>JQuery Effects</h3>
+<p id="content" class="testClass">JQuery is a library created using javascript as a language.</p>
+<p>Enter name:<input id="nameInp"></p>
+<button id="btn1">OK</button>
+<div id="ajaxData"></div>
+</body>
+</html>

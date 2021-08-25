@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Knockout - Model Binding</title>
+    <script src = 'scripts/jquery-3.1.1.min.js'></script>
+    <script src = 'scripts/knockout-3.4.1.js'></script>
+    <script>
+       $(document).ready(function(){
+             var firstRankHolder = {
+                firstName: ko.observable(),
+                lastName: ko.observable()
+             };         
+             var secondRankHolder = {
+                fName: 'Sidney',
+                lName: 'Sheldon',
+                score: 1200,
+                address:'Bangalore'
+             };
+
+             var dummySecondRankHolder = {
+                firstName: secondRankHolder.fName,
+                lastName: secondRankHolder.lName,
+                fullName: secondRankHolder.fName + ' ' + secondRankHolder.lName
+             }
+
+             ko.applyBindings(firstRankHolder, document.getElementById('firstRankDiv'));//To specify the place where binding is needs to be applied, by default everywhere if not specified.
+             ko.applyBindings(dummySecondRankHolder, document.getElementById('secondRankDiv'));
+             
+       })
+       
+    </script>
+  </head>
+  <body>
+
+      <div id="firstRankDiv">
+          <h2>First Rank</h2>
+          First Name : <input type="text" data-bind="value:firstName, valueUpdate:'keypress'"><br/>
+          Second Name : <input type="text" data-bind="value:lastName"><br/>
+
+          Span First Name : <span data-bind="text:firstName"></span>
+          Span Last Name : <span data-bind="text:lastName"></span>
+      </div>
+
+        <div id="secondRankDiv">
+          <h2>Second Rank</h2>
+          First Name : <input type="text" data-bind="value:firstName"><br/>
+          Second Name : <input type="text" data-bind="value:lastName"> <br/>
+          Score : <input type="text" data-bind="value:fullName">
+        </div>
+    
+        
+    
+  </body>
+  
+</html>

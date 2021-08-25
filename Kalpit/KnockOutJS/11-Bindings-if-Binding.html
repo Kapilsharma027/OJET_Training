@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Knockout - Basic Observable</title>
+      <script src="scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
+      <script src="scripts/knockout-3.4.1.js" type="text/javascript"></script>
+      <script>
+         $(function(){
+               function productViewModel(){
+                  var self = this;
+                  self.products = [
+                      { name: 'Whiteboard Marker', salePrice: 45, listPrice: 46, hasStock: false  }, 
+                      { name: 'Pencil', salePrice: 5, listPrice: 6, hasStock: true  },
+                      { name: 'Stapler', salePrice: 65, listPrice: 70, hasStock: true  }       
+                  ]
+          
+               }
+
+               ko.applyBindings(new productViewModel());
+         });
+      </script>
+   </head>
+   <body> 
+      <ul data-bind="foreach: products">
+        <li>
+            Product: <b data-bind="text: name"> </b>
+            <!--<div data-bind="if: !hasStock">
+                No Stock Available
+            </div>-->
+
+            <div data-bind="ifnot: hasStock">
+                No Stock Available
+            </div>
+
+            <div data-bind="if: hasStock">
+                Sale Price: <b data-bind="text: salePrice"> </b>
+                List Price: <b data-bind="text: listPrice"> </b>
+            </div>
+            <br/>
+        </li>
+      </ul>
+   </body>
+</html>

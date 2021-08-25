@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+   <head>
+      <script src = "https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js" 
+         type = "text/javascript"></script>
+   </head> 
+   <body>
+      <!-- This is called "view" of HTML markup that defines the appearance of UI -->
+      <!-- valueUpdate is only needed if we want to update after every character is entered. -->
+      <p>Enter your name: <input data-bind = "value: yourName, valueUpdate: 'afterkeydown'" /></p>
+      <p>Hi <strong data-bind = "text: yourName"></strong> Good Morning!!!</p>
+
+      <p>Enter age: <input data-bind = "value: age" /></p>
+      <p>Your age: <span data-bind = "text: age"></span></p>
+      <p>In 2022 your age will be: <span data-bind = "text: age22"></span></p>
+      <p>List of functional programming language: <span data-bind = "text: listOfLangs"></span></p>
+      <!-- Binding on lenght also works. -->
+      <p>Count:</p><span data-bind = "text: listOfLangs().length"></span></p>
+      <script>
+         // This is called "viewmodel". This javascript section defines the data and behavior of UI
+         function AppViewModel(){
+            var self = this; //As a
+            this.yourName = ko.observable("");//Initial value empty
+
+            this.yourName.subscribe(function(newName){
+               console.log("New Name:", newName);
+               //console.log("Age", this.age());//Doesn't work bcz context of this is different.
+               //console.log(this);
+               //console.log(self);
+               console.log("Age", self.age()); //Works bcz 'this' context of AppViewModel is stored in 'self'. Also note empty braces are used for accessing value.
+            });
+
+            this.age = ko.observable("20");//Initial value 20.
+            //this.age = 20; //It sets age only one time for 20. After that any change in input box won't be reflected.
+
+            this.age.subscribe(function(newAge){
+               if(newAge>100)
+                  self.age(20);
+               //Change in age22 can be done here but in that case initial value will be empty, since this function is subscribing only the change.
+            });
+
+            this.age22 = ko.computed(function(){
+               //Observable dependent on another observable.
+               //Do computation and return result.
+               return parseInt(self.age())+2;//ParseInt is used as we are going to receive value as 22.
+            });
+
+            this.listOfLangs = ko.observableArray(["Python", "Javascript", "Kotlin"]);
+            
+         }
+
+         vm = new AppViewModel();
+         // Activates knockout.js
+         ko.applyBindings(vm );
+
+         setTimeout(function(){
+            vm.yourName("Abhijit"),
+            vm.listOfLangs.push("Swift")}
+            , 2000);//Setting yourName as Abhijit after 2 seconds once the page is loaded.
+   
+
+      </script>
+   </body>
+</html>

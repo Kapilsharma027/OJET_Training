@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>My First Page</title>
+    <script type="text/javascript"> 
+
+        function add(a,b){
+            var result = a+b;
+            console.log("Result:", result);
+            document.getElementById('res').innerHTML = result;
+            return result;
+        };
+        
+        //Dosn't work as elements are not yet loaded.
+        //document.getElementById("res").innerHTML = "<em> Click 'ADD' to see result </em>";
+    </script>
+</head>
+<body>  
+    <h3>OJET Training</h3>
+    <p>Welcome to OJET Training</p>
+    <button onclick="add(10,20)">ADD</button>
+    <p>10 + 20 = <span id="res"></span</p>
+    <script>
+        //Works as elements are loaded now.
+        //Single/Double quotes both works.
+        document.getElementById("res").innerHTML = "<em> Click 'ADD' to see result </em>";
+    </script>
+</body>
+</html>

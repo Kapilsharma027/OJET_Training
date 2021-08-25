@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>My First Page</title>
+    <script type="text/javascript">
+    
+        function Book(auth, subj){
+            this.author = auth;
+            this.subject = subj;
+            this.displayInfo = function(){
+                document.write("<br/> Subject:" + this.subject);
+                document.write("<br/> Author:" + this.author);
+            }
+        }
+
+            var b1 = new Book("Android","Andy Rubin");
+            var b2 = new Book("iOS", "Steve");
+
+            //Gets added to all the objects, can be seen inside __proto
+            //Inbuild objects can also be extended but not a good practice.
+            Book.prototype.setPrice = function(price){
+                this.price = price;
+            }
+
+            var b3 = new Book("Javascript", "Brandan Rich");
+
+            b1.displayInfo();
+            b2.displayInfo();
+
+            b1.setPrice = 100;
+            b2.setPrice = 1000;
+
+            console.log(b1);
+            console.log(b2);
+            console.log(b3);
+    </script>
+</head>
+<body>  
+    <h3>OJET Training</h3>
+    <p>Welcome to OJET Training</p>
+</body>
+</html>

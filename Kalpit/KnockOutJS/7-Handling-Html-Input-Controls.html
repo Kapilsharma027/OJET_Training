@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Knockout - Basic Observable</title>
+      <script src="scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
+      <script src="scripts/knockout-3.4.1.js" type="text/javascript"></script>
+      <script>
+         $(function(){
+            var viewModel = {
+                userName: ko.observable("wshakepeare"),
+                password: ko.observable("P@ssw0rd"),
+                isActive: ko.observable(true),
+                membershipType: ["Regular", "Gold", "Platinum"],
+                selectedMemberShip: ko.observable("Platinum"),
+                hobbies: ["Songs", "Cooking", "Cricket","Gardening"],
+                selectedHobbies: ko.observable(["Songs","Gardening"])
+            };
+            ko.applyBindings(viewModel);
+         });
+      </script>
+   </head>
+   <body>
+      <div >   
+      <div >
+        <table>
+            <tr>
+                <td class="label">User Name:</td>
+                <td data-bind="text: userName"></td>
+            </tr>
+            <tr>
+                <td class="label">Password:</td>
+                <td data-bind="text: password"></td>
+            </tr>
+            <tr>
+                <td class="label">isActive:</td>
+                <td data-bind='text: isActive() ? "True" : "False"'></td>
+            </tr>
+            <tr>
+                <td class="label">Selected Membership:</td>
+                <td data-bind="text: selectedMemberShip"></td>
+            </tr>
+            <tr>
+                <td class="label">Hobbies:</td>
+                <td data-bind="text: selectedHobbies"></td>
+            </tr>
+        </table>
+    </div>
+     
+    <br/> 
+
+    <table>
+        <tr>
+            <td class="label">User Name:</td>
+            <td><input data-bind="value: userName" /></td>
+        </tr>
+        <tr>
+            <td class="label">Password:</td>
+            <td><input type="password" data-bind="value: password" /></td>
+        </tr>
+        <tr>
+            <td class="label">Is active:</td>
+            <td><input type="checkbox" data-bind="checked: isActive" /></td>
+        </tr>
+        <tr>
+            <td class="label">Hobbies:</td>
+            <td><select multiple="multiple" data-bind="options: hobbies, selectedOptions: selectedHobbies"></select></td>
+        </tr>
+        <tr>
+            <td class="label">Radio buttons:</td>
+            <td>
+                <label><input type="radio" value="Regular" data-bind="checked: selectedMemberShip" />Regular</label>
+                <label><input type="radio" value="Gold" data-bind="checked: selectedMemberShip" />Gold</label>
+                <label><input type="radio" value="Platinum" data-bind="checked: selectedMemberShip" />Platinum</label>
+            </td>
+        </tr>
+    </table>
+    
+</div>
+   </body>
+</html>

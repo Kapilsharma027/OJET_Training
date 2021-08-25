@@ -1,0 +1,6 @@
+EMCSS tickets and list of services impacted
+
+1841 - rome upgrade - RSS
+1842 - commons-validator upgrade - PushIO
+1843 - FindBugs - 
+1825 - jackson-databind upgrade - SRM, sc-bulk, sfdc-bulk, omc-reporting, lookup, ics, bluekai

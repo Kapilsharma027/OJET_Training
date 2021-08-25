@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Knockout - Basic Observable</title>
+      <script src="scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
+      <script src="scripts/knockout-3.4.1.js" type="text/javascript"></script>
+      <script>
+         $(function(){
+
+                var CourseListModel = function () {
+                this.courseToAdd = ko.observable("");
+                this.allCourses = ko.observableArray(["ASP.NET MVC 5", "C#", "Unity Framework", "Entity Framework"]);
+                this.selectedCourses = ko.observableArray(["ASP.NET MVC 5","C#"]);  
+                //this.selectedCourses =["ASP.NET MVC 5","C#"];             
+     
+                this.addCourse = function () {
+                    if ((this.courseToAdd() != "") && (this.allCourses.indexOf(this.courseToAdd()) < 0)) 
+                        this.allCourses.push(this.courseToAdd());
+                    this.courseToAdd(""); 
+                };
+     
+                this.removeCourse = function () {
+                    this.allCourses.removeAll(this.selectedCourses());
+                    this.selectedCourses([]); // Clear selection
+                };
+     
+                this.sortCourses = function() {
+                    this.allCourses.sort();
+                };
+              };
+     
+              ko.applyBindings(new CourseListModel());
+         });
+      </script>
+   </head>
+   <body> 
+      <form data-bind="submit:addCourse">
+          Add item: <input type="text" data-bind='value:courseToAdd, valueUpdate: "afterkeydown"' />
+          <button type="submit" data-bind="enable: courseToAdd().length > 0">Add</button>
+      </form>
+       
+      <p>Your values:</p>
+      <select multiple="multiple" height="5" data-bind="options:allCourses, selectedOptions:selectedCourses"> </select>
+       
+      <div>
+          <button data-bind="click: removeCourse, enable: selectedCourses().length > 0">Remove</button>
+          <button data-bind="click: sortCourses, enable: allCourses().length > 1">Sort</button>
+      </div>
+   </body>
+</html>

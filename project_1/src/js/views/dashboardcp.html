@@ -1,0 +1,52 @@
+<!--
+ Copyright (c) 2014, 2021, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <h1>Dashboard Content Area</h1>
+  <div>
+    <h6>Name : <input data-bind="textInput:name"> </h6>
+    <h6>DOB :  
+      <oj-form-layout max-columns="3" direction="row"> 
+      <oj-input-date value={{dob}}  label-hint="DOB" autocomplete="off"></oj-input-date>
+  </oj-form-layout>
+
+</h6>
+    <hr>
+    <h3>Your name is <span data-bind="text:name"> </span> and age is <span data-bind="text:age"> </span>
+      <h3>
+
+        <br>
+  </div>
+
+
+  <div id="row1">
+    <div id="column1">
+      <h3>Please follow the statistics</h3>
+
+      <!-- radio button -->
+      <div id="formId">
+        <oj-radioset id="radiosetBasicDemoId" label-hint="Select Chart" label-edge="inside" value="{{chartType}}">
+          <!-- This is an example of how to use oj-bind-for-each, along with oj-bind-text to 
+          iterate over an array of objects-->
+          <oj-bind-for-each data="[[chartOption]]">
+            <template>
+              <oj-option value="[[$current.data.value]]">
+                <oj-bind-text value="[[$current.data.chart]]"></oj-bind-text>
+              </oj-option>
+            </template>
+          </oj-bind-for-each>
+        </oj-radioset>
+
+
+      </div>
+
+
+
+      <oj-chart type="[[chartType]]" series="[[datasource]]"></oj-chart>
+    </div>
+
+
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>My First Page</title>
+    <script type="text/javascript">
+    
+        //1. Object Constructor
+        var p1 = new Object();
+        p1.firstName = "John";
+        p1.lastName = "Smith";
+
+        console.log(p1);
+
+        //2. Object literal syntax
+
+        var p2 = { firstName: "Merry", lastName: "Rose"};
+
+        console.log(p2);
+
+        //3. Constructor function
+
+        function Person(fName, lName){
+            this.firstName = fName;
+            this.lastName = lName;
+            this.fullName = function(){
+                return this.firstName+" "+this.lastName;
+            }
+        }
+
+        var p3 = new Person("Robert", "Laidlow");
+        //Allows to modify propertyset.
+        p3.age = 20;//add
+        p3.age = 40;//update
+        var p4 = new Person("Mike", "Tyson");
+        var p5=p4;
+        delete p4.lastName;//delete
+
+        console.log(p3);
+        console.log(p4);
+        //No lastName as pointing to same place as p4
+        console.log(p5); 
+        console.log(p3.fullName());
+
+        //4. JSON
+
+        var p6 = {"firstName":"Sridevi", "lastName":"Sawant", "pincode":123456};
+        console.log(p6);
+        console.log(p6.pincode);
+        console.log(p6["lastName"]);
+    </script>
+</head>
+<body>  
+    <h3>OJET Training</h3>
+    <p>Welcome to OJET Training</p>
+</body>
+</html>

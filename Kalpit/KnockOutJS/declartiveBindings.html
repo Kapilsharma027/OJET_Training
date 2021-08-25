@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+   <head>
+      <script src = "https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js" 
+         type = "text/javascript"></script>
+        <script src = "scripts/jquery-3.1.1.min.js" type = "text/javascript"></script>
+        <script>
+            function myModel(){
+                var self = this;
+                self.decision = ko.observable();
+                self.buttonClick = function(){
+                    console.log("Download clicked");
+                };
+                self.studentName = ko.observable("");
+                self.listOfStudents = ko.observableArray();
+                self.addStudent = function(){
+                    self.listOfStudents.push(self.studentName());
+                };
+                self.studentsToRemove = ko.observableArray();
+                self.removeStudents = function(){
+                    var selection = self.studentsToRemove();
+                    for(let i=0;i<selection.length;i++)
+                    {
+                        self.listOfStudents.remove(selection[i]);
+                    }
+                };
+                self.selectedStd = ko.observable();
+            };
+            var vm = new myModel();
+            $(document).ready(function(){
+                ko.applyBindings(vm);
+            });
+        </script>
+   </head> 
+   <body>
+    <div>
+        <p>Enter student name<input data-bind="value: studentName"></p>
+        <button data-bind="click: addStudent, enable: studentName().length>0">Add Student</button>
+        <p>List of students:<span data-bind="text: listOfStudents"></span></p>
+    </div>
+    <hr>
+    <div>
+        <select multiple="true" data-bind="options: listOfStudents, selectedOptions: studentsToRemove"></select>
+        <button  data-bind="click: removeStudents">Remove students</button>
+    </div>
+    <hr>
+    <div>
+        Select a student :
+        <div data-bind="foreach: listOfStudents">
+            <!--$data is to access elements one bye one, $parent is to get parent attributes -->
+            <input type="radio" name="xyz" data-bind="value: $data, checked: $parent.selectedStd"><span data-bind="text:$data"></span>
+        </div>
+        <p>Selected Student: <span data-bind="text: selectedStd"></span></p>
+    </div>
+    <hr>
+      <div>
+          <p>Liscensing Text...</p>
+          <input type="checkbox" data-bind="checked: decision"><span>Accept Liscense</span>
+          <p>Accepted Liscense? <span data-bind="text: decision"></span></p>
+          <!-- Visible/Enable according to use-->
+          <button data-bind="click: buttonClick, enable: decision">Download</button>
+      </div>
+   </body>
+</html>
