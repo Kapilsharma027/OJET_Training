@@ -1,0 +1,98 @@
+<div>
+    <h1>Play Ground</h1>
+</div>
+
+<div class="oj-flex">
+  
+    <div class="oj-flex-item oj-panel" style="margin: 10px; background-color:Coral">
+      <h4>Calculator</h4>
+      <!-- <strong>20+ years of experience in Production Management.</strong>
+      <br>
+      <br>
+      <oj-chart type = "bar" series ="[[datasource1]]">
+      </oj-chart> -->
+      <div id="div1">
+        <oj-input-text id="text-input" value="{{calInput1}}"
+        label-hint="Enter first number" label-edge="inside"></oj-input-text>
+        <div class="oj-sm-margin-4x-vertical">
+            
+        </div>
+      </div>
+
+      <div id="div1">
+        <oj-input-text id="text-input" value="{{calInput2}}"
+        label-hint="Enter second number" label-edge="inside"></oj-input-text>
+        <div class="oj-sm-margin-4x-vertical">
+           
+         
+        </div>
+      </div>
+
+
+      <oj-radioset id="radiosetBasicDemoId" label-hint="Select Chart" label-edge="inside" value="{{operationType}}">
+        <!-- This is an example of how to use oj-bind-for-each, along with oj-bind-text to 
+        iterate over an array of objects-->
+        <oj-bind-for-each data="[[operation]]">
+          <template>
+            <oj-option value="[[$current.data.value]]">
+              <oj-bind-text value="[[$current.data.chart]]"></oj-bind-text>
+            </oj-option>
+          </template>
+        </oj-bind-for-each>
+      </oj-radioset>
+<br>
+      <oj-button id='button1' on-oj-action='[[buttonAction]]'>Check</oj-button>
+<br>
+<span>
+ <h6>Result: </h6><oj-bind-text value="[[calResult]]"></oj-bind-text></span>
+    </div>
+
+    <div class="oj-flex-item oj-panel" style="margin: 10px; background-color:SlateBlue">
+      <h4>Prime Checker</h4>
+
+      <div id="div1">
+        <oj-input-text id="text-input" value="{{primeValue}}"
+        label-hint="Enter a number" label-edge="inside"></oj-input-text>
+        <div class="oj-sm-margin-4x-vertical">
+            <span>Is Prime Number: </span>
+          <span>
+            <oj-bind-text value="[[isPrime]]"></oj-bind-text>
+          </span>
+        </div>
+      </div>
+
+      <!-- <strong>18+ years of experience in Electrical Assembly </strong>
+      <br>
+      <br>
+      <oj-chart type = "bar" series ="[[datasource2]]">
+      </oj-chart> -->
+    </div>
+
+    <div class="oj-flex-item oj-panel" style="margin: 10px; background-color:Khaki">
+      <h4>Temperature Conversion</h4>
+      <!-- <strong>19+ years of experience in Electronic Product R & D </strong>
+      <br>
+      <br>
+      <oj-chart type = "bar" series ="[[datasource3]]">
+      </oj-chart> -->
+
+      <div id="div1">
+        <oj-input-text id="text-input" value="{{Fahrenheit}}"
+        label-hint="Fahrenheit" label-edge="inside"></oj-input-text>
+        <div class="oj-sm-margin-4x-vertical">
+           
+        </div>
+      </div>
+
+      <div id="div1">
+        <oj-input-text id="text-input" value="{{Celcius}}"
+        label-hint="Celcius" label-edge="inside"></oj-input-text>
+        <div class="oj-sm-margin-4x-vertical">
+            <!-- <span>Is Prime Number: </span>
+          <span>
+            <oj-bind-text value="[[isPrime]]"></oj-bind-text>
+          </span> -->
+        </div>
+      </div>
+    </div>
+</div> 
