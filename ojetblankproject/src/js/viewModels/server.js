@@ -1,7 +1,7 @@
-define(['knockout','ojs/ojcollectiondataprovider','ojs/ojmodel','ojs/ojtable'], function (ko,CollectionDataProvider,Model) {
+define(['knockout', 'ojs/ojcollectiondataprovider', 'ojs/ojmodel', 'ojs/ojtable'], function (ko, CollectionDataProvider, Model) {
 
     function serverViewModel() {
-// Following steps from the 
+        // Following steps from the 
         // Steps for fatching data from server
         //   step 1: Define URL
         self.serviceURL = "https://apex.oracle.com/pls/apex/oraclejet/lp/activities/";
@@ -20,20 +20,20 @@ define(['knockout','ojs/ojcollectiondataprovider','ojs/ojmodel','ojs/ojtable'], 
             urlRoot: self.serviceURL,
             parse: self.parseData,
             idAttribute: 'id'
-        }); 
+        });
 
         // step 4:create the model object 
-        self.myDept = new self.Department(); 
+        self.myDept = new self.Department();
 
         // create the collection  
-                // Extend the collection class
-                self.DeptCollection = Model.Collection.extend({
-                    url: self.serviceURL + "?limit=50",
-                    model: self.myDept
-                });
-                // Create the collection object
-                self.DeptCol = ko.observable();
-                self.DeptCol(new self.DeptCollection());
+        // Extend the collection class
+        self.DeptCollection = Model.Collection.extend({
+            url: self.serviceURL + "?limit=50",
+            model: self.myDept
+        });
+        // Create the collection object
+        self.DeptCol = ko.observable();
+        self.DeptCol(new self.DeptCollection());
 
         // connect the datasource to collection through CDP
         self.datasource = ko.observable();

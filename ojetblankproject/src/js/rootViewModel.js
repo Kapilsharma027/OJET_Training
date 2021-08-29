@@ -16,14 +16,22 @@ define(["ojs/ojcorerouter",
  ){
 
     function rootViewModel(){
+        this.loggedIn  = ko.observable(false);
 
  // Define the routes
  this.routes = [
-    { path: "", redirect: "home" },
+    { path: "", redirect: "login" },
+    { path: "login", detail: { label: "Login" } },
     { path: "home", detail: { label: "Home" } },
+    { path: "login_ex2", detail: { label: "Login 2" } },
+    { path: "home_ex2", detail: { label: "Home 2" } },
     { path: "playground", detail: { label: "Playground" } },
     { path: "server", detail: { label: "Server" } },
     { path: "about", detail: { label: "About" } },
+    { path: "form", detail: { label: "Form" } },
+    { path: "editable_Table", detail: { label: "Editable Table" } },
+    { path: "table_filter", detail: { label: "Table Filter" } },
+    { path: "drag&drop_table", detail: { label: "Table Drag & Drop" } },
 ];
 // Create ADP with partial array, excluding first redirect route
 this.dataProvider = new ArrayDataProvider(this.routes.slice(1), {
@@ -39,7 +47,15 @@ this.selection = new KnockoutRouterAdapter(this.router);
 this.moduleAdapter = new ModuleRouterAdapter(this.router );
 // Synchronize the router, causing it to go to its default route
 this.router.sync();
+this.login = function(){
+    this.loggedIn(true);
+    //ko.postbox.publish("loggedIn", true );
+  }
 
+  this.logout = function(){
+    this.loggedIn(false);
+    //ko.postbox.publish("loggedIn", false );
+  }
 
     }
     return new rootViewModel();

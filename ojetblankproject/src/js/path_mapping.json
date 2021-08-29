@@ -27,7 +27,20 @@
         "cdnPath": "knockout/knockout-3.5.1"
       }
     },
-
+    "knockout-postbox": {
+      "cdn": "koPBOX",
+      "cwd": "node_modules/knockout-postbox/build",
+      "debug": {
+        "src": "knockout-postbox.js",
+        "path": "libs/knockout-postbox/knockout-postbox.js",
+        "cdnPath": "knockout-postbox/knockout-postbox.js"
+      },
+      "release": {
+        "src": "knockout-postbox.min.js",
+        "path": "libs/knockout-postbox/knockout-postbox.min.js",
+        "cdnPath": "knockout-postbox/knockout-postbox.min.js"
+      }
+    },
     "jquery": {
       "cdn": "3rdparty",
       "cwd": "node_modules/jquery/dist",
